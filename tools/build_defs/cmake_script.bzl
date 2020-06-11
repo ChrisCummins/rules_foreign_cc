@@ -254,19 +254,19 @@ def _fill_crossfile_from_toolchain(workspace_name, target_os, tools, flags):
         ])
 
     if flags.cc:
-        dict["CMAKE_C_FLAGS_INIT"] = _join_flags_list(workspace_name, flags.cc)
+        dict["CMAKE_C_FLAGS_INIT"] = _join_flags_list(workspace_name, [])
     if flags.cxx:
-        dict["CMAKE_CXX_FLAGS_INIT"] = _join_flags_list(workspace_name, flags.cxx)
+        dict["CMAKE_CXX_FLAGS_INIT"] = _join_flags_list(workspace_name, [])
     if flags.assemble:
-        dict["CMAKE_ASM_FLAGS_INIT"] = _join_flags_list(workspace_name, flags.assemble)
+        dict["CMAKE_ASM_FLAGS_INIT"] = _join_flags_list(workspace_name, [])
 
     # todo this options are needed, but cause a bug because the flags are put in wrong order => keep this line
     #    if flags.cxx_linker_static:
     #        lines += [_set_list(ctx, "CMAKE_STATIC_LINKER_FLAGS_INIT", flags.cxx_linker_static)]
     if flags.cxx_linker_shared:
-        dict["CMAKE_SHARED_LINKER_FLAGS_INIT"] = _join_flags_list(workspace_name, flags.cxx_linker_shared)
+        dict["CMAKE_SHARED_LINKER_FLAGS_INIT"] = _join_flags_list(workspace_name, [])
     if flags.cxx_linker_executable:
-        dict["CMAKE_EXE_LINKER_FLAGS_INIT"] = _join_flags_list(workspace_name, flags.cxx_linker_executable)
+        dict["CMAKE_EXE_LINKER_FLAGS_INIT"] = _join_flags_list(workspace_name, [])
 
     return dict
 
